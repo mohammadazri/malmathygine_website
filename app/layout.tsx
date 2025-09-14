@@ -75,7 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </p>
               <div className="flex items-center gap-4">
                 <a
-                  href={siteConfig.socials.facebook}
+                  href={siteConfig.socialLinks.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-700 transition-colors"

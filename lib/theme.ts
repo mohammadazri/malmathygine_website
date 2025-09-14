@@ -1,22 +1,52 @@
-export const navbarColors = {
+// theme.ts
+// Centralized theme for light/dark mode with semantic colors
+
+export const theme = {
   light: {
-    bg: "bg-amber-50/80", // soft warm background
-    border: "border-amber-200",
-    link: "text-amber-900",
-    linkHover: "hover:text-orange-600",
-    dropdownBg: "bg-amber-100",
-    dropdownItem: "text-amber-900 hover:bg-amber-200",
-    mobileBg: "bg-amber-50",
-    facebookBg: "text-indigo-600 hover:text-indigo-700", // contrast highlight
+    colors: {
+      background: "#FFFFFF", // clean, minimal
+      surface: "#F8FAFC", // cards, containers
+      primary: "#1D4ED8", // trust, buttons, links
+      secondary: "#10B981", // freshness, hygiene highlights
+      accent: "#FBBF24", // call-to-action
+      textPrimary: "#111827", // readable text
+      textSecondary: "#374151", // secondary text
+      border: "#E5E7EB", // subtle dividers
+      hover: "#2563EB", // button hover
+      shadow: "rgba(0, 0, 0, 0.05)", // subtle elevation
+    },
+    typography: {
+      fontFamily: "'Inter', sans-serif",
+      headings: "'Inter', sans-serif",
+      body: "'Inter', sans-serif",
+    },
   },
+
   dark: {
-    bg: "bg-slate-950/80", // deep cool background
-    border: "border-slate-700",
-    link: "text-slate-200",
-    linkHover: "hover:text-cyan-400",
-    dropdownBg: "bg-slate-900",
-    dropdownItem: "text-slate-200 hover:bg-slate-800",
-    mobileBg: "bg-slate-950",
-    facebookBg: "text-sky-400 hover:text-sky-500", // cooler highlight
+    colors: {
+      background: "#111827", // dark mode background
+      surface: "#1F2937", // cards / containers
+      primary: "#3B82F6", // trust color in dark mode
+      secondary: "#34D399", // fresh, visible accent
+      accent: "#FBBF24", // CTA stands out in dark
+      textPrimary: "#F9FAFB", // readable text
+      textSecondary: "#D1D5DB", // secondary text
+      border: "#374151", // divider
+      hover: "#60A5FA", // hover states
+      shadow: "rgba(0, 0, 0, 0.5)", // subtle elevation in dark
+    },
+    typography: {
+      fontFamily: "'Inter', sans-serif",
+      headings: "'Inter', sans-serif",
+      body: "'Inter', sans-serif",
+    },
+  },
+
+  // Semantic colors (mapped to human psychology)
+  semantic: {
+    success: "#10B981", // green = hygiene, health
+    warning: "#FBBF24", // yellow = call-to-action
+    error: "#EF4444", // red = warnings, errors
+    info: "#3B82F6", // blue = trust, cleanliness
   },
 };

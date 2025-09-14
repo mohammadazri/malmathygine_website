@@ -1,49 +1,69 @@
-// lib/seo.ts
+// seo.ts
 import { siteConfig } from "./site";
 
-export const defaultMetadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
-  },
+export const defaultSEO = {
+  title: siteConfig.name,
   description: siteConfig.description,
-  metadataBase: new URL(siteConfig.url),
+  canonical: siteConfig.url,
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.description,
     url: siteConfig.url,
-    siteName: siteConfig.name,
+    site_name: siteConfig.name,
     images: [
       {
-        url: siteConfig.ogImage,
+        url: `${siteConfig.url}/images/og-image.png`, // OG image
         width: 1200,
         height: 630,
         alt: siteConfig.name,
       },
     ],
-    locale: "en_MY",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
+    site: "@malmathhygiene",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
+    image: `${siteConfig.url}/images/og-image.png`,
   },
 };
 
-// Structured data (JSON-LD)
-export const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: siteConfig.name,
-  image: siteConfig.ogImage,
-  url: siteConfig.url,
-  telephone: siteConfig.contact.phone,
-  email: siteConfig.contact.email,
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "MY",
+// Dynamic SEO helper function for pages
+export const getPageSEO = ({
+  title,
+  description,
+  path,
+  image,
+}: {
+  title?: string;
+  description?: string;
+  path?: string;
+  image?: string;
+}) => ({
+  title: title ? `${title} | ${siteConfig.name}` : siteConfig.name,
+  description: description || siteConfig.description,
+  canonical: path ? `${siteConfig.url}${path}` : siteConfig.url,
+  openGraph: {
+    title: title ? `${title} | ${siteConfig.name}` : siteConfig.name,
+    description: description || siteConfig.description,
+    url: path ? `${siteConfig.url}${path}` : siteConfig.url,
+    site_name: siteConfig.name,
+    images: [
+      {
+        url: image || `${siteConfig.url}/images/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+    type: "website",
   },
-  sameAs: [siteConfig.socials.facebook],
-};
+  twitter: {
+    card: "summary_large_image",
+    site: "@malmathhygiene",
+    title: title ? `${title} | ${siteConfig.name}` : siteConfig.name,
+    description: description || siteConfig.description,
+    image: image || `${siteConfig.url}/images/og-image.png`,
+  },
+});
