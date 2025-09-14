@@ -51,3 +51,53 @@ After modifying the `.npmrc` file, you need to run `pnpm install` again to ensur
 ## License
 
 Licensed under the [MIT license](https://github.com/heroui-inc/next-app-template/blob/main/LICENSE).
+
+
+
+
+
+
+
+
+malmat-website/
+│
+├── app/
+│   ├── layout.tsx          # Root layout (metadata, Navbar, Footer, theme)
+│   ├── providers.tsx       # HeroUI + next-themes provider
+│   ├── page.tsx            # Homepage
+│   ├── about/
+│   │   └── page.tsx
+│   ├── services/
+│   │   └── page.tsx
+│   └── contact/
+│       └── page.tsx
+│
+├── components/
+│   ├── Navbar.tsx
+│   ├── Footer.tsx
+│   ├── Hero.tsx
+│   ├── ServiceCard.tsx
+│   └── SEO.tsx
+│
+├── lib/
+│   ├── site.ts             # Company config
+│   ├── seo.ts              # SEO metadata helpers
+│   └── utils.ts            # Helpers (cn, formatPhone, currentYear)
+│
+├── public/
+│   ├── images/
+│   │   ├── logo.png
+│   │   ├── hero.jpg
+│   │   └── services/
+│   │       ├── mats.jpg
+│   │       └── hygiene.jpg
+│   └── favicon.ico
+│
+├── styles/
+│   └── globals.css
+│
+├── tailwind.config.ts
+├── postcss.config.mjs
+├── tsconfig.json
+├── package.json
+└── README.md
