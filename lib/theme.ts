@@ -1,52 +1,50 @@
-// theme.ts
-// Centralized theme for light/dark mode with semantic colors
-
 export const theme = {
   light: {
     colors: {
-      background: "#FFFFFF", // clean, minimal
-      surface: "#F8FAFC", // cards, containers
-      primary: "#1D4ED8", // trust, buttons, links
-      secondary: "#10B981", // freshness, hygiene highlights
-      accent: "#FBBF24", // call-to-action
-      textPrimary: "#111827", // readable text
-      textSecondary: "#374151", // secondary text
-      border: "#E5E7EB", // subtle dividers
-      hover: "#2563EB", // button hover
-      shadow: "rgba(0, 0, 0, 0.05)", // subtle elevation
+      background: "#F0F4FF",        // light bluish background
+      surface: "#FFFFFF",           // white cards / nav
+      primary: "#1E3A8A",           // deep blue for main actions
+      secondary: "#F97316",         // bright orange accent
+      accent: "#8B5CF6",            // purple CTA
+      companyText: "#1E40AF",       // company name text in light
+      textPrimary: "#111827",       // main text
+      textSecondary: "#374151",     // secondary text
+      border: "#E5E7EB",            // subtle dividers
+      hover: "#2563EB",             // hover effect for buttons/links
+      shadow: "rgba(0, 0, 0, 0.05)",
     },
     typography: {
       fontFamily: "'Inter', sans-serif",
-      headings: "'Inter', sans-serif",
+      headings: "'Poppins', sans-serif",
       body: "'Inter', sans-serif",
     },
   },
 
   dark: {
     colors: {
-      background: "#111827", // dark mode background
-      surface: "#1F2937", // cards / containers
-      primary: "#3B82F6", // trust color in dark mode
-      secondary: "#34D399", // fresh, visible accent
-      accent: "#FBBF24", // CTA stands out in dark
-      textPrimary: "#F9FAFB", // readable text
-      textSecondary: "#D1D5DB", // secondary text
-      border: "#374151", // divider
-      hover: "#60A5FA", // hover states
-      shadow: "rgba(0, 0, 0, 0.5)", // subtle elevation in dark
+      background: "#0F172A",        // deep dark blue
+      surface: "#1E293B",           // dark container/nav
+      primary: "#3B82F6",           // bright blue
+      secondary: "#F59E0B",         // gold accent
+      accent: "#8B5CF6",            // purple CTA
+      companyText: "#22D3EE",       // cyan company name for dark mode
+      textPrimary: "#F8FAFC",       // main text
+      textSecondary: "#CBD5E1",     // secondary text
+      border: "#334155",            // divider
+      hover: "#60A5FA",
+      shadow: "rgba(0, 0, 0, 0.6)",
     },
     typography: {
       fontFamily: "'Inter', sans-serif",
-      headings: "'Inter', sans-serif",
+      headings: "'Poppins', sans-serif",
       body: "'Inter', sans-serif",
     },
   },
 
-  // Semantic colors (mapped to human psychology)
   semantic: {
-    success: "#10B981", // green = hygiene, health
-    warning: "#FBBF24", // yellow = call-to-action
-    error: "#EF4444", // red = warnings, errors
-    info: "#3B82F6", // blue = trust, cleanliness
+    success: "#10B981",
+    warning: "#FBBF24",
+    error: "#EF4444",
+    info: "#3B82F6",
   },
 };
