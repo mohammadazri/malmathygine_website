@@ -1,130 +1,114 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { siteConfig } from "@/lib/site";
 import { button as buttonStyles } from "@heroui/theme";
-import { Snippet } from "@heroui/snippet";
-import { Code } from "@heroui/code"; // correct
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
-import { GithubIcon } from "@/components/icons";
+export default function HeroSection() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-export default function Home() {
+  // Wait until mounted to avoid hydration mismatch
+  useEffect(() => setMounted(true), []);
+
+  // fallback to light logo until mounted
+  const heroLogo =
+    mounted && resolvedTheme === "light"
+      ? "/images/dark_logo.png"
+      : "/images/hero.png";
+
   return (
-    <div className="flex flex-col w-full overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative bg-primary/10 dark:bg-primary/20 py-20 md:py-32 text-center">
-        <div className="max-w-4xl mx-auto px-6">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight">
-            Keep Your Business <span className="text-secondary">Spotless</span> & Hygienic
-          </h1>
-          <p className="mt-6 text-lg md:text-xl text-gray-700 dark:text-gray-300">
-            MalMath Hygiene provides professional floor mat cleaning services with pickup, washing, and replacement — ensuring safety and cleanliness for your customers and employees.
-          </p>
-          <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-            <Link
-              href="/services"
-              className={buttonStyles({ color: "secondary", radius: "full", variant: "shadow" })}
-            >
-              Our Services
-            </Link>
-            <Link
-              href="/contact"
-              className={buttonStyles({ color: "primary", radius: "full", variant: "bordered" })}
-            >
-              Get a Quote
-            </Link>
-          </div>
-        </div>
-        <div className="mt-12 flex justify-center">
+    <section className="relative w-full min-h-screen flex flex-col md:flex-row bg-background dark:bg-gray-900 overflow-hidden">
+      
+      {/* Left Side */}
+      <motion.div
+        className="md:w-1/2 flex flex-col justify-center px-8 md:px-16 py-16"
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        {/* Large Hero Logo */}
+        <div className="w-full md:w-3/4 relative mb-8">
           <Image
-            src="/images/hero-mats.png"
-            width={700}
+            src={heroLogo}
+            alt="MalMath Hero"
+            width={400}
             height={400}
-            alt="Floor Mat Cleaning"
-            className="rounded-xl shadow-lg"
+            className="object-contain"
+            priority
           />
         </div>
-      </section>
 
-      {/* Features Section */}
-      <section className="py-20 md:py-32 bg-background dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-            Why Choose MalMath Hygiene?
-          </h2>
-          <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            We combine professional cleaning with convenience, reliability, and unmatched hygiene standards.
-          </p>
+        {/* Tagline */}
+        <motion.p
+          className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          Professional Floor Mat Cleaning for a Spotless & Hygienic Business
+        </motion.p>
 
-          <div className="mt-12 grid md:grid-cols-3 gap-10">
-            {/* Feature 1 */}
-            <div className="bg-surface dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-lg transition-all">
-              <h3 className="text-xl font-semibold text-primary dark:text-primary">Professional Cleaning</h3>
-              <p className="mt-2 text-gray-700 dark:text-gray-300">
-                High-standard cleaning for all types of floor mats ensuring a hygienic environment.
-              </p>
-            </div>
-            {/* Feature 2 */}
-            <div className="bg-surface dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-lg transition-all">
-              <h3 className="text-xl font-semibold text-primary dark:text-primary">Scheduled Pickup & Delivery</h3>
-              <p className="mt-2 text-gray-700 dark:text-gray-300">
-                Convenient weekly or bi-weekly mat pickup and replacement to fit your schedule.
-              </p>
-            </div>
-            {/* Feature 3 */}
-            <div className="bg-surface dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-lg transition-all">
-              <h3 className="text-xl font-semibold text-primary dark:text-primary">Custom Hygiene Plans</h3>
-              <p className="mt-2 text-gray-700 dark:text-gray-300">
-                Tailored services to meet the hygiene needs of high-traffic businesses.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-20 md:py-32 bg-primary/5 dark:bg-primary/10">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">What Our Clients Say</h2>
-          <div className="mt-12 grid md:grid-cols-3 gap-8">
-            <div className="bg-surface dark:bg-gray-800 p-6 rounded-xl shadow">
-              <p className="text-gray-700 dark:text-gray-300 italic">
-                "MalMath Hygiene transformed our workspace! Reliable and professional service every week."
-              </p>
-              <p className="mt-4 font-semibold text-primary dark:text-secondary">– John D., Office Manager</p>
-            </div>
-            <div className="bg-surface dark:bg-gray-800 p-6 rounded-xl shadow">
-              <p className="text-gray-700 dark:text-gray-300 italic">
-                "Their pickup and delivery service is incredibly convenient. Highly recommend for any business."
-              </p>
-              <p className="mt-4 font-semibold text-primary dark:text-secondary">– Sarah L., Retail Owner</p>
-            </div>
-            <div className="bg-surface dark:bg-gray-800 p-6 rounded-xl shadow">
-              <p className="text-gray-700 dark:text-gray-300 italic">
-                "Professional, efficient, and hygienic. Our customers notice the difference!"
-              </p>
-              <p className="mt-4 font-semibold text-primary dark:text-secondary">– Ahmad R., Restaurant Manager</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Call To Action Section */}
-      <section className="py-20 md:py-32 bg-secondary text-white text-center rounded-t-3xl">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold">Ready to Keep Your Business Clean?</h2>
-          <p className="mt-4 text-lg">
-            Contact us today and schedule your first mat cleaning service.
-          </p>
+        {/* Buttons */}
+        <motion.div
+          className="flex flex-col sm:flex-row gap-4"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1, duration: 0.8 }}
+        >
+          <Link
+            href="/services"
+            className={buttonStyles({
+              color: "secondary",
+              radius: "full",
+              variant: "shadow",
+            })}
+          >
+            Our Services
+          </Link>
           <Link
             href="/contact"
-            className={buttonStyles({ color: "primary", radius: "full", variant: "shadow" })}
+            className={buttonStyles({
+              color: "primary",
+              radius: "full",
+              variant: "bordered",
+            })}
           >
-            Get Started
+            Get a Quote
           </Link>
-        </div>
-      </section>
-    </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Right Side Image */}
+      <motion.div
+        className="md:w-1/2 relative flex justify-center items-center px-8 md:px-16 py-16"
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <Image
+          src="/images/hero-mats.png"
+          alt="Floor Mat Cleaning"
+          width={500}
+          height={500}
+          className="rounded-3xl shadow-xl hover:scale-105 transition-transform duration-500"
+        />
+      </motion.div>
+
+      {/* Optional Floating Background Shapes */}
+      <motion.div
+        className="absolute -top-16 -left-16 w-64 h-64 bg-accent/20 rounded-full filter blur-3xl"
+        animate={{ scale: [1, 1.2, 1] }}
+        transition={{ duration: 6, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute -bottom-16 -right-16 w-64 h-64 bg-primary/20 rounded-full filter blur-3xl"
+        animate={{ scale: [1, 1.2, 1] }}
+        transition={{ duration: 5, repeat: Infinity }}
+      />
+    </section>
   );
 }

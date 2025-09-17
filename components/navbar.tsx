@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -20,17 +20,32 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const { theme: currentTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const colors = currentTheme === "dark" ? theme.dark.colors : theme.light.colors;
+  // Fix hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    // Render a placeholder nav until mounted
+    return (
+      <nav className="w-full fixed top-0 left-0 z-50 h-16 bg-white dark:bg-gray-900" />
+    );
+  }
+
+  const colors =
+    currentTheme === "dark" ? theme.dark.colors : theme.light.colors;
 
   return (
     <nav
       className={clsx(
-        "w-full fixed top-0 left-0 z-50 backdrop-blur-md bg-white/50 dark:bg-gray-900/50 shadow-lg transition-all duration-500",
+        "w-full fixed top-0 left-0 z-50 backdrop-blur-md shadow-lg transition-all duration-500",
+        currentTheme === "dark" ? "bg-gray-900/50" : "bg-white/50",
         className
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 md:h-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
         {/* Logo + Company Name */}
         <Link href="/" className="flex items-center space-x-2">
           <div className="w-10 h-10 relative">
@@ -42,12 +57,7 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
             />
           </div>
           <span
-            className={clsx(
-              "hidden md:inline text-lg font-extrabold tracking-wide transition-colors",
-              currentTheme === "dark"
-                ? "text-companyText dark:text-companyText"
-                : "text-companyText"
-            )}
+            className="hidden md:inline text-lg font-extrabold tracking-wide transition-colors"
             style={{ color: colors.companyText }}
           >
             {siteConfig.name}
@@ -63,9 +73,9 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
               className={clsx(
                 "relative font-medium hover:transition-colors transition-colors",
                 pathname === item.href
-                  ? `text-${colors.secondary}`
-                  : `text-${colors.textPrimary}`,
-                "hover:text-secondary dark:hover:text-secondary"
+                  ? "text-secondary"
+                  : "text-gray-900 dark:text-gray-100",
+                "hover:text-secondary"
               )}
             >
               {item.title}
@@ -84,7 +94,6 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
             <Facebook size={20} />
           </a>
 
-          {/* Theme Switch */}
           <ThemeSwitch className="ml-4" />
         </div>
 
@@ -114,19 +123,18 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className={clsx(
-                "font-bold text-lg hover:transition-colors transition-colors",
-                pathname === item.href
-                  ? `text-${colors.secondary}`
-                  : `text-${colors.textPrimary}`,
-                "hover:text-secondary dark:hover:text-secondary"
-              )}
+              className="font-bold text-lg transition-colors hover:text-secondary"
+              style={{
+                color:
+                  pathname === item.href
+                    ? colors.secondary
+                    : colors.textPrimary,
+              }}
             >
               {item.title}
             </Link>
           ))}
 
-          {/* Facebook Icon */}
           <a
             href={siteConfig.socialLinks.facebook}
             target="_blank"

@@ -27,7 +27,7 @@ export const theme = {
       primary: "#3B82F6",           // bright blue
       secondary: "#F59E0B",         // gold accent
       accent: "#8B5CF6",            // purple CTA
-      companyText: "#22D3EE",       // cyan company name for dark mode
+      companyText: "white",       // cyan company name for dark mode
       textPrimary: "#F8FAFC",       // main text
       textSecondary: "#CBD5E1",     // secondary text
       border: "#334155",            // divider
