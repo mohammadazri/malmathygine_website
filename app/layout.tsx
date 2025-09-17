@@ -6,6 +6,7 @@ import { Providers } from "./providers";
 import { siteConfig } from "@/lib/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/Footer";
 
 // --- SEO & OpenGraph / Twitter Cards ---
 export const metadata: Metadata = {
@@ -82,51 +83,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Navbar />
             </header>
 
-            {/* Main content: full width, no padding */}
+            {/* Main content */}
             <main className="flex-grow w-full">{children}</main>
 
             {/* Footer */}
-            <footer className="w-full border-t border-gray-200 dark:border-gray-700 py-6 flex flex-col md:flex-row items-center justify-between gap-3 px-4 md:px-8">
-              <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-300 mt-1">
-                  {siteConfig.description}
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-300 mt-1">
-                  Contact: {siteConfig.contact.phone} | {siteConfig.contact.email} |{" "}
-                  {siteConfig.contact.address}
-                </p>
-              </div>
-
-              <div className="flex items-center gap-4">
-                {siteConfig.socialLinks.facebook && (
-                  <a
-                    href={siteConfig.socialLinks.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
-                  >
-                    Facebook
-                  </a>
-                )}
-                {siteConfig.socialLinks.instagram && (
-                  <a
-                    href={siteConfig.socialLinks.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-pink-500 hover:text-pink-600 transition-colors"
-                  >
-                    Instagram
-                  </a>
-                )}
-                <span className="text-sm text-gray-400 hidden md:inline">|</span>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Designed with care using HeroUI & Next.js
-                </p>
-              </div>
-            </footer>
+            <Footer />
           </div>
         </Providers>
       </body>

@@ -3,14 +3,14 @@ export const theme = {
     colors: {
       background: "#F0F4FF",        // light bluish background
       surface: "#FFFFFF",           // white cards / nav
-      primary: "#1E3A8A",           // deep blue for main actions
-      secondary: "#F97316",         // bright orange accent
-      accent: "#8B5CF6",            // purple CTA
+      primary: "#00C4FF",           // neon cyan for futuristic feel
+      secondary: "#6D28D9",         // deep purple accent
+      accent: "#14F195",            // futuristic green CTA
       companyText: "#1E40AF",       // company name text in light
       textPrimary: "#111827",       // main text
       textSecondary: "#374151",     // secondary text
       border: "#E5E7EB",            // subtle dividers
-      hover: "#2563EB",             // hover effect for buttons/links
+      hover: "#00E5FF",             // hover glow color
       shadow: "rgba(0, 0, 0, 0.05)",
     },
     typography: {
@@ -24,14 +24,14 @@ export const theme = {
     colors: {
       background: "#0F172A",        // deep dark blue
       surface: "#1E293B",           // dark container/nav
-      primary: "#3B82F6",           // bright blue
-      secondary: "#F59E0B",         // gold accent
-      accent: "#8B5CF6",            // purple CTA
+      primary: "#00E5FF",           // bright cyan
+      secondary: "#8B5CF6",         // purple accent
+      accent: "#22D3EE",            // light blue accent
       companyText: "white",       // cyan company name for dark mode
       textPrimary: "#F8FAFC",       // main text
       textSecondary: "#CBD5E1",     // secondary text
       border: "#334155",            // divider
-      hover: "#60A5FA",
+      hover: "#22FFFF",             // futuristic hover glow
       shadow: "rgba(0, 0, 0, 0.6)",
     },
     typography: {

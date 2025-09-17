@@ -22,20 +22,11 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
   const { theme: currentTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Fix hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
-  if (!mounted) {
-    // Render a placeholder nav until mounted
-    return (
-      <nav className="w-full fixed top-0 left-0 z-50 h-16 bg-white dark:bg-gray-900" />
-    );
-  }
+  if (!mounted) return <nav className="w-full fixed top-0 left-0 z-50 h-16 bg-white dark:bg-gray-900" />;
 
-  const colors =
-    currentTheme === "dark" ? theme.dark.colors : theme.light.colors;
+  const colors = currentTheme === "dark" ? theme.dark.colors : theme.light.colors;
 
   return (
     <nav
@@ -45,10 +36,10 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
         className
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+      <div className="max-w-full mx-auto px-6 flex justify-between items-center h-16">
         {/* Logo + Company Name */}
         <Link href="/" className="flex items-center space-x-2">
-          <div className="w-10 h-10 relative">
+          <div className="w-12 h-12 relative">
             <Image
               src={siteConfig.logo}
               alt={`${siteConfig.name} Logo`}
@@ -57,7 +48,7 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
             />
           </div>
           <span
-            className="hidden md:inline text-lg font-extrabold tracking-wide transition-colors"
+            className="text-xl font-extrabold tracking-wide transition-colors"
             style={{ color: colors.companyText }}
           >
             {siteConfig.name}
@@ -65,33 +56,34 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden md:flex items-center space-x-8">
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={clsx(
-                "relative font-medium hover:transition-colors transition-colors",
-                pathname === item.href
-                  ? "text-secondary"
-                  : "text-gray-900 dark:text-gray-100",
-                "hover:text-secondary"
-              )}
+              className="relative font-medium text-gray-900 dark:text-gray-100 group"
+              style={{ color: pathname === item.href ? colors.secondary : colors.textPrimary }}
             >
               {item.title}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full rounded"></span>
+              {/* Futuristic underline animation */}
+              <span
+                className="absolute left-0 -bottom-1 h-0.5 w-0 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] transition-all duration-300 group-hover:w-full"
+                style={{
+                  background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
+                }}
+              ></span>
             </Link>
           ))}
 
-          {/* Facebook Icon */}
+          {/* Social Icon */}
           <a
             href={siteConfig.socialLinks.facebook}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-4 hover:opacity-80 transition-opacity"
+            className="ml-4 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[var(--color-primary)]/50"
             style={{ color: colors.primary }}
           >
-            <Facebook size={20} />
+            <Facebook size={22} />
           </a>
 
           <ThemeSwitch className="ml-4" />
@@ -102,7 +94,7 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
           <ThemeSwitch className="mr-2" />
           <button
             onClick={() => setOpen(!open)}
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+            className="p-2 rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-[var(--color-primary)] hover:to-[var(--color-secondary)] hover:scale-105 hover:shadow-lg hover:shadow-[var(--color-primary)]/40"
             aria-label="Toggle Menu"
           >
             {open ? <X size={24} /> : <Menu size={24} />}
@@ -117,29 +109,55 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
           open ? "translate-y-0" : "-translate-y-full"
         )}
       >
-        <div className="flex flex-col mt-16 p-6 space-y-6">
+        {/* Drawer Header */}
+        <div className="flex items-center justify-between px-6 h-16 border-b border-gray-200 dark:border-gray-700">
+          <div className="flex items-center space-x-2">
+            <div className="w-10 h-10 relative">
+              <Image
+                src={siteConfig.logo}
+                alt={`${siteConfig.name} Logo`}
+                fill
+                className="object-contain"
+              />
+            </div>
+          </div>
+          <button
+            onClick={() => setOpen(false)}
+            className="p-2 rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-[var(--color-primary)] hover:to-[var(--color-secondary)] hover:scale-105 hover:shadow-lg hover:shadow-[var(--color-primary)]/40"
+            aria-label="Close Menu"
+          >
+            <X size={24} />
+          </button>
+        </div>
+
+        {/* Drawer Links */}
+        <div className="flex flex-col p-6 space-y-6">
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="font-bold text-lg transition-colors hover:text-secondary"
+              className="font-bold text-lg relative group"
               style={{
-                color:
-                  pathname === item.href
-                    ? colors.secondary
-                    : colors.textPrimary,
+                color: pathname === item.href ? colors.secondary : colors.textPrimary,
               }}
             >
               {item.title}
+              <span
+                className="absolute left-0 -bottom-1 h-0.5 w-0 bg-gradient-to-r transition-all duration-300 group-hover:w-full"
+                style={{
+                  background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
+                }}
+              ></span>
             </Link>
           ))}
 
+          {/* Social Icon */}
           <a
             href={siteConfig.socialLinks.facebook}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center hover:opacity-80 transition-opacity"
+            className="flex items-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[var(--color-primary)]/50"
             style={{ color: colors.primary }}
           >
             <Facebook size={24} />
