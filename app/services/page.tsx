@@ -1,37 +1,35 @@
 "use client";
 
-import { FC } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { siteConfig } from "@/lib/site";
-import { theme } from "@/lib/theme";
+import Image from "next/image";
 
 const services = [
   {
-    title: "Floor Mat Cleaning",
-    description: "High-quality deep cleaning for commercial and residential floor mats.",
-    image: "/images/services/floor_mat.png",
+    title: "Industrial Mat Rental",
+    description: "High-quality entrance and anti-fatigue mats for commercial & industrial spaces.",
+    image: "/images/services/industrial_mats.png",
   },
   {
-    title: "Carpet Sanitization",
-    description: "Ensure a hygienic workspace with professional carpet sanitization.",
-    image: "/images/services/office.png",
+    title: "Hygiene Products Supply",
+    description: "Premium hand sanitizers, soaps, and dispensers for offices and facilities.",
+    image: "/images/services/hygiene.png",
   },
   {
-    title: "Stain Removal",
-    description: "Advanced stain removal technology for all types of fabrics.",
-    image: "/images/services/stain.png",
+    title: "Pest Control Services",
+    description: "Safe and effective pest control solutions for commercial buildings.",
+    image: "/images/services/pest_control.png",
   },
   {
-    title: "Maintenance Plans",
-    description: "Custom maintenance programs to keep your mats and carpets spotless.",
-    image: "/images/services/maintainance.png",
+    title: "Maintenance & Delivery",
+    description: "Scheduled pickup, cleaning, and delivery of mats with quality assurance.",
+    image: "/images/services/maintenance.png",
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <section className="relative w-full bg-background dark:bg-gray-900 overflow-hidden">
+    <section className="relative w-full bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+      
       {/* Animated Background Shapes */}
       <motion.div
         className="absolute -top-32 -left-32 w-72 h-72 bg-accent/20 rounded-full filter blur-3xl"
@@ -43,14 +41,19 @@ export default function ServicesPage() {
         animate={{ rotate: [360, 0] }}
         transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
       />
+      <motion.div
+        className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-300/20 rounded-full filter blur-2xl"
+        animate={{ scale: [1, 1.2, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
 
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-6 py-20 text-center relative z-10">
         <h1 className="text-5xl sm:text-6xl font-extrabold mb-4 text-gray-900 dark:text-white tracking-tight">
-          Our <span className="text-gradient bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Futuristic Services</span>
+          Our <span className="text-gradient bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Industrial Solutions</span>
         </h1>
         <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-12">
-          Advanced cleaning solutions designed to give your business spotless hygiene and a futuristic touch.
+          Comprehensive mat rental, hygiene, and pest control services designed to keep your facilities spotless and safe.
         </p>
       </div>
 
@@ -89,13 +92,13 @@ export default function ServicesPage() {
       {/* Process Section */}
       <div className="max-w-7xl mx-auto px-6 py-20 text-center relative z-10">
         <h2 className="text-4xl font-extrabold mb-12 text-gray-900 dark:text-white">
-          How We Deliver Futuristic Cleaning
+          How We Deliver Industrial Hygiene
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
           {[
-            { step: 1, title: "Inspection & Pickup", description: "We analyze your mats and prepare them for deep futuristic cleaning." },
-            { step: 2, title: "Deep Cleaning & Sanitization", description: "Advanced machines sanitize with precision, leaving zero residues." },
-            { step: 3, title: "Delivery & Quality Check", description: "Your mats are returned pristine, ready for futuristic hygiene." },
+            { step: 1, title: "Inspection & Pickup", description: "We analyze your mats and schedule pickup for cleaning or maintenance." },
+            { step: 2, title: "Deep Cleaning & Sanitization", description: "Advanced machines sanitize mats and facilities, leaving zero residues." },
+            { step: 3, title: "Delivery & Quality Check", description: "Mats are returned pristine, ensuring hygiene and safety for your spaces." },
           ].map((s) => (
             <motion.div
               key={s.step}
@@ -119,10 +122,10 @@ export default function ServicesPage() {
       <div className="max-w-7xl mx-auto px-6 py-20 text-center relative z-10">
         <div className="bg-gradient-to-r from-primary to-accent rounded-3xl p-12">
           <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-6">
-            Ready to Elevate Your Hygiene?
+            Ready to Elevate Your Facility Hygiene?
           </h2>
           <p className="text-lg sm:text-xl text-white/90 mb-8">
-            Get a futuristic cleaning plan tailored to your business.
+            Request a custom industrial hygiene plan tailored to your business.
           </p>
           <a
             href="/contact"

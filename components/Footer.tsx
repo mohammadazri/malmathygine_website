@@ -10,17 +10,16 @@ export const Footer: FC = () => {
   const { theme: currentTheme } = useTheme();
   const colors = currentTheme === "dark" ? theme.dark.colors : theme.light.colors;
 
-  // Wait until mounted to avoid hydration mismatch
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
   return (
     <footer className="w-full bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-      <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
         
         {/* Company Info */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-1">
+        <div className="text-center md:text-left">
           <h2 className="text-lg font-bold" style={{ color: colors.companyText }}>
             {siteConfig.name}
           </h2>
@@ -65,15 +64,9 @@ export const Footer: FC = () => {
         </div>
 
         {/* Credits */}
-        <div className="flex flex-col items-center md:items-end text-center md:text-right space-y-1">
-          <p className="text-gray-400 dark:text-gray-500">
-            &copy; {new Date().getFullYear()} {siteConfig.name}
-          </p>
-          <p className="text-gray-400 dark:text-gray-500">
-            Designed with ❤️ using Next.js & HeroUI
-          </p>
+        <div className="text-center md:text-right text-gray-400 dark:text-gray-500 text-sm">
+          &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
         </div>
-
       </div>
     </footer>
   );
