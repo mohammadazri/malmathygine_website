@@ -122,7 +122,7 @@ export default function HeroSection() {
         transition={{ duration: 1 }}
       >
         <motion.div
-          className="w-full max-w-md sm:max-w-lg"
+          className="hidden md:block w-full max-w-md sm:max-w-lg"
           animate={{ y: FLOAT_Y }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
@@ -135,29 +135,58 @@ export default function HeroSection() {
           />
         </motion.div>
 
-        {/* Mobile Headline */}
-        <motion.h1
-          className="md:hidden text-3xl sm:text-4xl font-bold text-center text-gray-900 dark:text-white mt-6 mb-4 leading-snug"
-          initial={{ y: 10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          Industrial <span className="text-primary dark:text-accent">Mat Rental</span> & <span className="text-secondary dark:text-pink-400">Hygiene Solutions</span>
-        </motion.h1>
+{/* Mobile Section (centered) */}
+<div className="md:hidden flex flex-col justify-center items-center text-center px-6 min-h-[90vh]">
+  {/* Headline */}
+  <motion.h1
+    className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-snug"
+    initial={{ y: 10, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ delay: 0.3 }}
+  >
+    Industrial <span className="text-primary dark:text-accent">Mat Rental</span> &{" "}
+    <span className="text-secondary dark:text-pink-400">Hygiene Solutions</span>
+  </motion.h1>
 
-        {/* Mobile Buttons */}
-{/* Mobile Buttons */}
-<div className="md:hidden flex flex-col sm:flex-row gap-3 w-full max-w-xs mx-auto">
-  {buttons.map((btn) => (
-    <FuturisticButton
-      key={btn.label}
-      href={btn.href}
-      label={btn.label}
-      gradient={btn.gradient}
-      hoverShadow={btn.hoverShadow}
-    />
-  ))}
+  {/* Tagline */}
+  <motion.p
+    className="mt-3 text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-md tracking-wide"
+    initial={{ y: 10, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ delay: 0.5 }}
+  >
+    Trusted partner for cleaner, safer spaces. We rent & maintain mats, supply hygiene products, and provide pest control services.
+  </motion.p>
+
+  {/* Small Floating Image */}
+<motion.div
+  className="mt-6 mb-6 w-48 h-48 relative overflow-hidden rounded-xl shadow-2xl ring-2 ring-primary/20 dark:ring-accent/20"
+  animate={{ y: FLOAT_Y }}
+  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+>
+  <Image
+    src="/images/services/floor_mat.png"
+    alt="Industrial Mat"
+    fill
+    className="object-cover"
+  />
+</motion.div>
+
+
+  {/* Buttons */}
+  <div className="flex flex-col sm:flex-row gap-4 w-full max-w-xs">
+    {buttons.map((btn) => (
+      <FuturisticButton
+        key={btn.label}
+        href={btn.href}
+        label={btn.label}
+        gradient={btn.gradient}
+        hoverShadow={btn.hoverShadow}
+      />
+    ))}
+  </div>
 </div>
+
 
       </motion.div>
 
