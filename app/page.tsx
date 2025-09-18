@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
+import { Typewriter } from "react-simple-typewriter";
+
 
 // Constants for motion
 const ANIMATION_X = 60;
@@ -83,14 +85,27 @@ export default function HeroSection() {
           <Image src={heroLogo} alt="Hero Logo" fill className="object-contain" priority />
         </div>
 
-        <motion.h1
-          className="text-5xl font-extrabold leading-tight mb-6 text-gray-900 dark:text-white"
-          initial={{ y: ANIMATION_Y, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          Industrial <span className="text-primary dark:text-accent">Mat Rental</span> & <span className="text-secondary dark:text-pink-400">Hygiene Solutions</span> for Your Buildings
-        </motion.h1>
+<motion.h1
+  className="text-5xl font-extrabold leading-tight mb-6 text-gray-900 dark:text-white"
+  initial={{ y: ANIMATION_Y, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ delay: 0.5 }}
+>
+  Industrial{" "}
+  <span className="text-primary dark:text-accent">
+    <Typewriter
+      words={["Mat Rental", "Floor Solutions"]}
+      loop={true}
+      cursor
+      cursorStyle="|"
+      typeSpeed={80}
+      deleteSpeed={50}
+      delaySpeed={1500}
+    />
+  </span>{" "}
+  & <span className="text-secondary dark:text-pink-400">Hygiene Solutions</span>
+</motion.h1>
+
 
         <motion.p
           className="text-lg text-gray-700 dark:text-gray-300 mb-6"
@@ -138,15 +153,27 @@ export default function HeroSection() {
 {/* Mobile Section (centered) */}
 <div className="md:hidden flex flex-col justify-center items-center text-center px-6 min-h-[90vh]">
   {/* Headline */}
-  <motion.h1
-    className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-snug"
-    initial={{ y: 10, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    transition={{ delay: 0.3 }}
-  >
-    Industrial <span className="text-primary dark:text-accent">Mat Rental</span> &{" "}
-    <span className="text-secondary dark:text-pink-400">Hygiene Solutions</span>
-  </motion.h1>
+<motion.h1
+  className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-snug"
+  initial={{ y: 10, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ delay: 0.3 }}
+>
+  Industrial{" "}
+  <span className="text-primary dark:text-accent">
+    <Typewriter
+      words={["Mat Rental", "Floor Solutions"]}
+      loop={true}
+      cursor
+      cursorStyle="|"
+      typeSpeed={80}
+      deleteSpeed={50}
+      delaySpeed={1500}
+    />
+  </span>{" "}
+  & <span className="text-secondary dark:text-pink-400">Hygiene Solutions</span>
+</motion.h1>
+
 
   {/* Tagline */}
   <motion.p
