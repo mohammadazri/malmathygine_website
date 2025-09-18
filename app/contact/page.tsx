@@ -133,14 +133,15 @@ export default function ContactPage() {
 <div className="flex items-start">
   <MapPinIcon theme={theme} />
   <a
-    href="https://www.google.com/maps/search/?api=1&query=Jalan+Kota+Raja+F+27%2FF,+Taman+Bunga+Negara,+40400+Shah+Alam,+Malaysia"
+    href="https://www.google.com/maps/search/?api=1&query=No+26A+1st+Floor,+Jalan+Kota+Raja+J+27%2FJ,+Seksyen+27,+Hicom+Town+Centre,+40400+Shah+Alam,+Selangor"
     target="_blank"
     rel="noopener noreferrer"
     className={`${theme === "dark" ? "text-white/80" : "text-neutral-950/80"} underline hover:text-sky-500 transition-colors`}
   >
-    Jalan Kota Raja F 27/F, Taman Bunga Negara, 40400 Shah Alam, Malaysia
+    No 26A 1st Floor, Jalan Kota Raja J 27/J, Seksyen 27, Hicom Town Centre, 40400 Shah Alam, Selangor
   </a>
 </div>
+
 
           </div>
           {/* Services Provided */}
