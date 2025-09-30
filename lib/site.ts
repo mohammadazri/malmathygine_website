@@ -2,10 +2,10 @@
 // Centralized site configuration for MalMath Hygiene
 
 export const siteConfig = {
-  name: "MalMath Hygiene",
-  shortName: "MalMath",
+  name: "MalMat Hygiene",
+  shortName: "MalMat",
   description:
-    "MalMath Hygiene provides professional floor mat cleaning services in Malaysia. We pick up, wash, and replace mats to keep your business clean and hygienic.",
+    "MalMat Hygiene provides professional floor mat cleaning services in Malaysia. We pick up, wash, and replace mats to keep your business clean and hygienic.",
   url: "https://malmathygiene.com", // Update with your domain
   logo: "/images/logo.png", // Path to your logo
   defaultLanguage: "en-US",
