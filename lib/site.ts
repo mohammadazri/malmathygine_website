@@ -6,7 +6,7 @@ export const siteConfig = {
   shortName: "MalMath",
   description:
     "MalMath Hygiene provides professional floor mat cleaning services in Malaysia. We pick up, wash, and replace mats to keep your business clean and hygienic.",
-  url: "https://malmathhygiene.com", // Update with your domain
+  url: "https://malmathygiene.com", // Update with your domain
   logo: "/images/logo.png", // Path to your logo
   defaultLanguage: "en-US",
   themeColor: {
@@ -16,13 +16,13 @@ export const siteConfig = {
   ogImage: "/images/logo.png", // OG image for SEO
   socialLinks: {
     facebook: "https://www.facebook.com/malmathygiene",
-    instagram: "",
-    linkedin: "",
-    twitter: "",
+    instagram: null,
+    linkedin: null,
+    twitter: null,
   },
   contact: {
-    phone: "+60XXXXXXXXX",
-    email: "info@malmathhygiene.com",
+    phone: "+603-58929572",
+    email: "malmat26@gmail.com",
     address: "Kuala Lumpur, Malaysia",
   },
   services: [
@@ -45,5 +45,11 @@ export const siteConfig = {
     { title: "About Us", href: "/about" },
     { title: "Contact", href: "/contact" },
   ],
+
+  // ✅ WhatsApp Config
+  whatsapp: {
+    number: "601161818108", // no "+" sign here (for wa.me format)
+    defaultMessage:
+      "Hi Bella, I came across MalMath Hygiene’s services and I’m impressed. I’d like to learn more about your mat rental, hygiene solutions, and pest control offerings. Could you please share the pricing or next steps? Thanks!",
+  },
 };
-  

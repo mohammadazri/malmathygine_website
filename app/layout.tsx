@@ -7,6 +7,7 @@ import { siteConfig } from "@/lib/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 // --- SEO & OpenGraph / Twitter Cards ---
 export const metadata: Metadata = {
@@ -88,6 +89,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
             {/* Footer */}
             <Footer />
+
+            {/* Floating WhatsApp */}
+            <FloatingWhatsApp />
           </div>
         </Providers>
       </body>
